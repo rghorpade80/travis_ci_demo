@@ -5,11 +5,5 @@ jdk:
 notifications:
   email: rghorpade80@gmail.com
 
-after_success:
-  ./.travis/artifact-upload.sh
   
-services:
-  - docker
-  
-before_install:
-  - docker build -t rghorpade80/travis-ci-game-of-life .
+
