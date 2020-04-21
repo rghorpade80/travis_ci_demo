@@ -5,5 +5,12 @@ jdk:
 notifications:
   email: rghorpade80@gmail.com
 
+sudo: required
+services:
+  - docker
+
+script:
+ 
+   - docker build -t rghorpade80/travis-ci-game-of-life .
   
 
