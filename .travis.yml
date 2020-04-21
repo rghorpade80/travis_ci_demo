@@ -5,6 +5,9 @@ jdk:
 notifications:
   email: rghorpade80@gmail.com
 
+after_success:
+  ./.travis/artifact-upload.sh
+  
 services:
   - docker
   
