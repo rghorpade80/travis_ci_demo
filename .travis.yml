@@ -15,6 +15,6 @@ services:
 
 script:
  
-   - docker build -t rghorpade80/travis-ci-game-of-life .
+   -  sudo docker build -t rghorpade80/travis-ci-game-of-life .
   
 
