@@ -15,7 +15,7 @@ services:
 
 script:
  
-   - docker build -t rghorpade80/travis-ci-game-of-life .
+   - docker build -t rghorpade80/travis-ci-game-of-life:${TRAVIS_COMMIT} .
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
   
