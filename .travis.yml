@@ -32,6 +32,6 @@ install:
 
 script:
   - kubectl version 
-
+  - kubectl get all -A
 
 
