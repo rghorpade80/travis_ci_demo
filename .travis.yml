@@ -24,7 +24,7 @@ jobs:
   include:
     - stage: build Maven Artifact
       script:
-         - ./mvnw clean instal
+         - ./mvnw clean install
     - stage: build docker image
       script:
          - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
