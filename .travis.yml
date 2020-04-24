@@ -26,9 +26,10 @@ install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - mkdir ${HOME}/.kube
-
+  - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
 
 script:
-  - kubectl version
+  - kubectl version --kubeconfig ${HOME}/.kube/config
+
 
 
