@@ -8,14 +8,14 @@ spec:
   type: NodePort
   ports: 
   - port: 8080
-    nodePort: 31003 
+    nodePort: 31010 
   selector:
     app: game-travis    
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: game-deployment
+  name: game-travis-deployment
   labels:
     app: game-travis
 spec:
