@@ -29,6 +29,7 @@ script:
    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
    - kubectl version 
    - kubectl get all -A
+   - kubectl apply -f travis_ci_demo.yml
   
 
 
