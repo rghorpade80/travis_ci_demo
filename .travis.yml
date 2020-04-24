@@ -27,8 +27,8 @@ script:
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
-   - kubectl version 
-   - kubectl get all -A
+   #- kubectl version 
+   #- kubectl get all -A
    - kubectl apply -f travis_ci_demo.yml
   
 
