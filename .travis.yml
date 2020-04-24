@@ -4,22 +4,6 @@ jdk:
   
 before_install:
   - chmod +x mvnw
-script: ./mvnw clean install
-  
-notifications:
-  email: rghorpade80@gmail.com
-
-sudo: required
-services:
-  - docker
-
-script:
- 
-   - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
-   - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
-   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-   - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
-   - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
   
 install:
  #- curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -27,11 +11,26 @@ install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - mkdir ${HOME}/.kube
-  #- echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
+ #- echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
   - cp config  ${HOME}/.kube/
+  
+  
+sudo: required
+services:
+  - docker
 
 script:
-  - kubectl version 
-  - kubectl get all -A
+
+   - ./mvnw clean install
+   - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
+   - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+   - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
+   - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+   - kubectl version 
+   - kubectl get all -A
+  
 
 
+notifications:
+  email: rghorpade80@gmail.com
