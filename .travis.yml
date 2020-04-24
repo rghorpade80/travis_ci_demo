@@ -1,0 +1,40 @@
+language: java
+jdk:
+  - openjdk8
+  
+before_install:
+  - chmod +x mvnw
+  
+install:
+ #- curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.7/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  - sudo mv ./kubectl /usr/local/bin/kubectl
+  - mkdir ${HOME}/.kube
+ #- echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
+  - cp config  ${HOME}/.kube/
+  
+  
+sudo: required
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build Maven Artifact
+      script:
+         - ./mvnw clean instal
+    - stage: build docker image
+      script:
+         - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
+         - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+         - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
+         - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+    - stage: Deploy
+      script: 
+         - kubectl apply -f travis_ci_demo.yml
+    
+
+notifications:
+  email: rghorpade80@gmail.com
