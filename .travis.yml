@@ -29,5 +29,6 @@ install:
   - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
 
 script:
-  - kubectl get pods
+  - kubectl version
+
 
