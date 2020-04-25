@@ -32,7 +32,7 @@ jobs:
         
     - stage: build docker image
       script:
-         - docker version
+         - cp ~/mycache/gameoflife.war .  
          - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
          - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
          - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
