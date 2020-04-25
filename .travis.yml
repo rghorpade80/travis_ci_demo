@@ -5,6 +5,7 @@ jdk:
   
 before_install:
   - chmod +x mvnw
+  - chmod +x test.sh
   
 install:
  #- curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -24,6 +25,7 @@ jobs:
   include:
     - stage: build Maven Artifact
       script:
+         - ./test.sh
          - ./mvnw clean install
     - stage: build docker image
       script:
