@@ -2,6 +2,9 @@ dist: xenial
 language: java
 jdk:
   - openjdk8
+cache:
+  directories:
+    - ~/mycache
   
 before_install:
   - chmod +x mvnw
@@ -25,7 +28,7 @@ jobs:
     - stage: build Maven Artifact
       script:
         - ./mvnw clean install
-        #- cp ./gameoflife-web/target/gameoflife.war ./target
+        - cp ./gameoflife-web/target/gameoflife.war ~/mycache
         
     - stage: build docker image
       script:
