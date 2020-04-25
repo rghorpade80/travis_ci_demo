@@ -24,12 +24,12 @@ services:
 
 jobs:
   include:
-    - stage: build Maven Artifact
+    - stage: BUILD MAVEN ARTIFACT 
       script:
         - ./mvnw clean install
         - cp ./gameoflife-web/target/gameoflife.war ~/mycache
         
-    - stage: build docker image
+    - stage: BUILD & PUSH DOCKER IMAGE
       script:
          - cp ~/mycache/gameoflife.war .  
          - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
@@ -38,7 +38,7 @@ jobs:
          - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
          - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
          
-    - stage: Deploy
+    - stage: DEPLOY ON K8S CLUSTER
       script: 
          - mkdir ${HOME}/.kube
          - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
