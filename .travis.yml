@@ -25,14 +25,14 @@ jobs:
   include:
     - stage: build Maven Artifact
       script:
-         curl -s -X POST \    
+        - curl -s -X POST \    
         -H "Content-Type: application/json" \    
         -H "Accept: application/json" \    
         -H "Travis-API-Version: 3" \    
         -H "Authorization: token QyeG2ZWVDDE3ZN8newkR_w" \    
         -d '{ "quiet": true }' \    
          https://api.travis-ci.com/job/161961364/debug 
-         - ./mvnw clean install
+        #- ./mvnw clean install
     - stage: build docker image
       script:
          - docker version
