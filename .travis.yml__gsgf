@@ -52,6 +52,11 @@ deploy:
     - mvn deploy --settings travis.settings.xml
   on:
     branch: master
+
+env:
+  global:
+  NEXUS_USERNAME
+  NEXUS_PASSWORD
     
 
 notifications:
