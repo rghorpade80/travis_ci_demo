@@ -25,7 +25,7 @@ jobs:
     - stage: build Maven Artifact
       script:
         - ./mvnw clean install
-        - cp ./gameoflife-web/target/gameoflife.war ./target
+        #- cp ./gameoflife-web/target/gameoflife.war ./target
         
     - stage: build docker image
       script:
