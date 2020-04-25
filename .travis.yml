@@ -45,7 +45,13 @@ jobs:
          - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
          - kubectl apply -f travis_ci_demo.yml
          
-
+deploy:
+  provider: script
+  script: 
+    #- cp .travis.settings.xml $HOME/.m2/settings.xml
+    - mvn deploy --settings travis.settings.xml
+  on:
+    branch: master
     
 
 notifications:
