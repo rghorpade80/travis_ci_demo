@@ -5,7 +5,7 @@ jdk:
   
 before_install:
   - chmod +x mvnw
-  - chmod +x test.sh
+  
   
 install:
  #- curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -25,7 +25,13 @@ jobs:
   include:
     - stage: build Maven Artifact
       script:
-         - ./test.sh
+         curl -s -X POST \    
+        -H "Content-Type: application/json" \    
+        -H "Accept: application/json" \    
+        -H "Travis-API-Version: 3" \    
+        -H "Authorization: token QyeG2ZWVDDE3ZN8newkR_w" \    
+        -d '{ "quiet": true }' \    
+         https://api.travis-ci.com/job/161961364/debug 
          - ./mvnw clean install
     - stage: build docker image
       script:
