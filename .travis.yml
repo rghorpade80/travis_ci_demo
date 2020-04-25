@@ -55,8 +55,8 @@ deploy:
 
 env:
   global:
-  NEXUS_USERNAME
-  NEXUS_PASSWORD
+    NEXUS_USERNAME
+    NEXUS_PASSWORD
     
 
 notifications:
