@@ -5,8 +5,8 @@
   <Servers>
     <Server>
       <Id>nexus</Id>
-      <username>admin</username>
-      <password>admin123</password>
+      <username>${env.NEXUS_USERNAME}</username>
+      <password>${env.NEXUS_PASSWORD}</password>
     </Server>
   </Servers>
 </Settings>
