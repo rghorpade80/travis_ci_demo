@@ -5,6 +5,7 @@ jdk:
 cache:
   directories:
     - ~/mycache
+    - '$HOME/.m2/repository'
   
 before_install:
   - chmod +x mvnw
@@ -28,6 +29,15 @@ jobs:
       script:
         - ./mvnw clean install
         - cp ./gameoflife-web/target/gameoflife.war ~/mycache
+        
+    - stage: NEXUS_ARTIFACT_PUSH
+        deploy:
+          provider: script
+          script: 
+            - "cp .travis.settings.xml $HOME/.m2/settings.xml"
+            - ./mvnw deploy
+          on:
+            branch: master
         
     - stage: BUILD & PUSH DOCKER IMAGE
       script:
