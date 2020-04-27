@@ -122,11 +122,19 @@ under the License.
       <password>admin123</password>
     </server>
     -->
+    <!--
     <server>
       <id>nexus</id>
       <username>${env.NEXUS_USERNAME}</username>
       <password>${env.NEXUS_PASSWORD}</password>
     </server>
+    -->
+    <server>
+      <id>nexus</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+      
 
     <!-- Another sample, using keys to authenticate.
     <server>
