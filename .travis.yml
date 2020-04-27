@@ -1,68 +1,47 @@
 dist: xenial
 language: java
 jdk:
-  - openjdk8
+- openjdk8
 cache:
   directories:
-    - ~/mycache
-    - '$HOME/.m2/repository'
-  
+  - "~/mycache"
+  - "$HOME/.m2/repository"
 before_install:
-  - chmod +x mvnw
-  
-  
+- chmod +x mvnw
 install:
- #- curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.7/bin/linux/amd64/kubectl
-  - chmod +x ./kubectl
-  - sudo mv ./kubectl /usr/local/bin/kubectl
-
-
-  
+- curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.7/bin/linux/amd64/kubectl
+- chmod +x ./kubectl
+- sudo mv ./kubectl /usr/local/bin/kubectl
 sudo: required
 services:
-  - docker
-
+- docker
 jobs:
   include:
-    - stage: BUILD MAVEN ARTIFACT 
-      script:
-        - ./mvnw clean install
-        - cp ./gameoflife-web/target/gameoflife.war ~/mycache
-        
-    - stage: NEXUS_ARTIFACT_PUSH
-      script:
-        - mvn deploy --settings travis.settings.xml
-      on:
-        branch: master
-           
-    - stage: BUILD & PUSH DOCKER IMAGE
-      script:
-         - cp ~/mycache/gameoflife.war .  
-         - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
-         - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
-         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-         - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
-         - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
-         
-    - stage: DEPLOY ON K8S CLUSTER
-      script: 
-         - mkdir ${HOME}/.kube
-         - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
-         - kubectl apply -f travis_ci_demo.yml
-         
- 
-         
-#deploy:
-#  provider: script
-#  script: 
-#    #- cp .travis.settings.xml $HOME/.m2/settings.xml
-#    - mvn deploy --settings travis.settings.xml
-# on:
-#    branch: master 
-
-
-    
-
+  - stage: BUILD MAVEN ARTIFACT
+    script:
+    - "./mvnw clean install"
+    - cp ./gameoflife-web/target/gameoflife.war ~/mycache
+  - stage: NEXUS_ARTIFACT_PUSH
+    script:
+    - mvn deploy --settings travis.settings.xml
+    on:
+      branch: master
+  - stage: BUILD & PUSH DOCKER IMAGE
+    script:
+    - cp ~/mycache/gameoflife.war .
+    - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
+    - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
+    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+  - stage: DEPLOY ON K8S CLUSTER
+    script:
+    - mkdir ${HOME}/.kube
+    - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
+    - kubectl apply -f travis_ci_demo.yml
 notifications:
   email: rghorpade80@gmail.com
+env:
+  global:
+  - secure: QopRH6k5/w1JojB2bh4uccaqHOjRXddMQcFv4BnKvra3QVLpdD4WH1ZMh3avQSfnwrdANOHe50rAxNtgljodYXwG5EOtCuFvyQ5zcI/g3pY16/tmGN6mXpvtKT9sbLaZdZMCHcMQKHzYkXP+albYzUmrEbxJixY2LFpsjjr68fM3QCwGUZLpbdFey0FdsmrA5pagYk+rWN2CmWKELFSNWUAnN1X0VHTUOxG60N+zxgGmykRE9mO1szlvvdOERlsPg5nGhmZifvmc8WPUWe9cJ9I35MqZ4sGkSo8i3/Tbrq2D46Szmg+vIwVmP2bz9tXDq1ojvSa/zMAvoflUTIQcgz7HhiNXYurGKEmjXxjLuwNztgjx3V+eIA3EHXZR8k+27zE14eAvNSyepd7kMY/XtJg64aKujIy1afHQX9ZICTaOaG2H7UiayXj5M1pbEr7L0k2qTuQ6PwXUSUfBLjoeYI5MBKv/srnBrMkwsrB20bFsXg4wtxdg4HvmrJKJ1fBJXtYou8Uj8tkCThG7zFLJ6vYgC7c5YJnD4+XO0rqv9kOg2vhivRi/82QIX9HUX3n34sOuX9oYo/S32kh738d1uJrGNYPXG8lB4hVCzYUSpS0q9k8F8vIjn4CRG+VrCliebLO0ADdOUr2ZHm1j3TvYPyGC7wnqf/0XLFvJf2c/BC0=
+  - secure: rZ1JWZnKKZjJCzbi5YYsQtEGQ4gnXiArm9jd0eLiNJRsBSJX74gXMldgcnq9osw2J8l0Cwoqkf37lDQzZFpDcqkg/rVuzra9d2MIlMU0wU18ppzhY5bfQvJy8e5251J9JTyHVz3XCflSAs7u91hAYdxCFeHTo1JoDcK5hmsp+rodbGXMn2RrMJ6XgKv/C9HjJ0srF0ucpWcvwLK1KBhmTDUIQzuEcNvsZThxfBe88K0JsQkZm9WL6NV6r6Qq1fCScpQ4o43ke25BIjd12CKkTTUUgHEzhvsNF2mwvQVaLKOuviKNlkqdmxUCmlEGyCOLQGMuLgvlRP1sP8UEoz1OHT/RNGhHfRJhczFX3irR3QOkEgs83ibs+xDGBedWoc3lEQTqOWkEwEg8eDvRy+PDEzrtGPdplvG1LIuoWckSwYotnxhBKg+caKZhaqOkC3zGvm+XdxcwHJWhBGlP+l15FhNEqzgEj+bgLCxGSDY7qbhHhLp76p33zIjpdAYxnnAGSjfs5C9ubpIv6gQSRMDfeZbARnghCK9jQW/gigzjrFDV4Q/Nlu3jr2Dc9G6stunA8O4JMCYnNbfFB6G9D81b3Xsb7lVp29C1oGU6aiQtzVMmVq9Ovwu5E1svdgy1s6+Kw/lqqRBFtYSRZ+G7ELyQkWXmyose/bj5t8DcFdf8CRc=
