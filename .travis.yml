@@ -22,6 +22,10 @@ jobs:
     - "./mvnw clean install"
     - cp ./gameoflife-web/target/gameoflife.war ~/mycache
     
+  - stage: JUNIT TEST EXCUTION
+    script:
+    - "./mvnw test -B"
+    
   - stage: NEXUS_ARTIFACT_PUSH
     script:
     - mvn deploy --settings travis.settings.xml
