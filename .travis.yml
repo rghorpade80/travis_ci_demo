@@ -19,7 +19,7 @@ jobs:
   include:
   - stage: BUILD MAVEN ARTIFACT
     script:
-    - "./mvnw clean install"
+    - "./mvnw clean install -DskipTests"
     - cp ./gameoflife-web/target/gameoflife.war ~/mycache
     
   - stage: JUNIT TEST EXCUTION
