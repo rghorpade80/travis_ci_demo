@@ -22,7 +22,7 @@ jobs:
     - "./mvnw clean install -DskipTests"
     - cp ./gameoflife-web/target/gameoflife.war ~/mycache
     
-  - stage: JUNIT TEST EXCUTION
+  - stage: JUNIT TEST EXECUTION
     script:
     - "./mvnw test -B"
     
@@ -56,7 +56,3 @@ jobs:
  
 notifications:
   email: rghorpade80@gmail.com
-env:
-  global:
-  - secure: ljYB4a7QEWzDLhxISuTHzUzFYjYy1sK31knYSZPD3limot/iTRtHh/j4IsrUi3esW3xpOmZdZgZ+qb1+wzSWbI4XFT6b2QcLD+2gEEf1u2WI+qvYMmhjw2oIT8lVMqh+nozvlx3kTPHU2TqKC2RslTxLqJuoa89U6xQ5oj8PepppNqxPJ9IxFvjDMMdS2CG5UJcuE/wwnNSvuPa2UTF86M5SEfB9P06XpHFK3WVo5pkZoOoqnO/Do0coxJBVk+jNqK+2PswKXkyCT5rSAjfT859kNSBpTqVwtyJGNUULO0AVOc2wVmLOCv+eZUeEwTVNpiuOC5H4GRUEY2xQcXXij+n5vhZwlcpTBlUYPuESR/VMHSRYGvmcVkTS9KIgeqoPkmnJ7XxJwKCzKwteBG2HFDm6otD5j1Z1vqFa1sV2wPu7v8l1mkcb2QmTX8VkwZV3yHzQadPQR1jo/ZnjxI3X2YbbGzTecuubYFqJgIXC7c4bYTVNLsfN5rattVurmA9I4Sw389iQWq45XHZQZ+nXye9mCh46kxVZrH3yRTNfJF6W4HAK1ncyb5WsRJHhPTzqzyB+hJG1ox7KW32Pm5LWq7PpVasm8YB2sBCPPFiMB3Y8FQHzMgU5gtDaJPq+M2V9zm1tOoet81JlN5QTK8/VpxDo54ck5VwtYoD8hYcWAic=
-  - secure: lBWbEWuTSkuPj7uRopx2go1kjmJQoBNpzKvHWHeZzr54zv8ufHwyLKb6n8Ag03eR14cB8BCcbEvtQEXWK3663WdgYjxmWcwTISE/abB3TS+oOk4sj5F44mKKhri1pCQ3iw7uykQTX/FOIyutHi6nAY0eMoxK47CXcfA0mmb7UwRd8Y38wU0W3jN8Er2Z5dy0xC7pGlPTPlq4Z/Ddor0ELrNy9g+cKFM4QIz0JibJB3mINdSKV9I7Zhwbcdngw9esm2mVunR6WhKB9Z9kzYxmeTS8WF5m+MpgdhQT6elgHlkBwUOp4J44EuXhe3bYMagllOAGe29+8+9Rm1qQMlBDVEMgLojPPEEDMyTN1tfDzf7zE1q4N1D9fpnqvVNcKGQpcq5pBpDg4xAUUD+iKEXtySbY0edoLw+LsgQdsbXr8iUrGWaL1UHuF43GTBZiBGjSL9+ypvR0iP8fISF+FiMsZdErzqagCQ7gWFX3zUbe8IEBQJ9MKovN33j7qE2JBegW0IRqRXittB/JbhDe9MHXimTE54dfeHUjI6F7JqBkkOgmqgP0w2tswWYGavHwofr1JG0kiZSgmSLB2pRr8kae6ktLpn68dIWmCiTwJ7xcDfyHhHfHTfc+TdRtYd1Wj+5gZJ5GgJ81R/bTP9f+qOi+fO/IzLwm5nOJ3w1iSp6rL6Y=
