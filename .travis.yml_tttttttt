@@ -41,11 +41,11 @@ jobs:
     - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
     - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
     
-  #- stage: DEPLOY ON K8S CLUSTER
-  #  script:
-  #  - mkdir ${HOME}/.kube
-  #  - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
-  #  - kubectl apply -f travis_ci_demo.yml
+  - stage: DEPLOY ON K8S CLUSTER
+    script:
+    - mkdir ${HOME}/.kube
+    - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
+    - kubectl apply -f travis_ci_demo.yml
   
   
 #deploy:
