@@ -48,6 +48,17 @@ jobs:
     - kubectl apply -f travis_ci_demo.yml
   
   
+  # blocklist
+branches:
+  except:
+  - test1
+
+# safelist
+branches:
+  only:
+  - master
+
+  
 #deploy:
 #  provider: script
  # script: mvn deploy --settings travis.settings.xml
