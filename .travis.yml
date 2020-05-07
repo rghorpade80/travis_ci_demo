@@ -48,10 +48,10 @@ jobs:
     - kubectl apply -f travis_ci_demo.yml
   
   
-  # blocklist
+# blocklist
 branches:
   except:
-  - test1
+  
 
 # safelist
 branches:
