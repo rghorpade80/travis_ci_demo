@@ -26,26 +26,26 @@ jobs:
     script:
     - "./mvnw test -B"
     
-  - stage: NEXUS_ARTIFACT_PUSH
-    script:
-    - mvn deploy --settings travis.settings.xml
-    on:
-      branch: master
+  # - stage: NEXUS_ARTIFACT_PUSH
+    # script:
+    # - mvn deploy --settings travis.settings.xml
+    # on:
+      # branch: master
       
-  - stage: BUILD & PUSH DOCKER IMAGE
-    script:
-    - cp ~/mycache/gameoflife.war .
-    - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
-    - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
-    - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+  # - stage: BUILD & PUSH DOCKER IMAGE
+    # script:
+    # - cp ~/mycache/gameoflife.war .
+    # - docker build -t "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT} .
+    # - docker tag "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}  "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
+    # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    # - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:${TRAVIS_COMMIT}
+    # - docker push "$DOCKER_USERNAME"/travis-ci-game-of-life:latest
     
-  - stage: DEPLOY ON K8S CLUSTER
-    script:
-    - mkdir ${HOME}/.kube
-    - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
-    - kubectl apply -f travis_ci_demo.yml
+  # - stage: DEPLOY ON K8S CLUSTER
+    # script:
+    # - mkdir ${HOME}/.kube
+    # - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
+    # - kubectl apply -f travis_ci_demo.yml
   
   
 
