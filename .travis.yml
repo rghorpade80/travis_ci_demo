@@ -55,6 +55,7 @@ jobs:
 branches:
   only:
   - master
+  - test1
 
   
 #deploy:
