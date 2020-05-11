@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/rghorpade80/travis_ci_demo.svg?branch=master&logo=travis)](https://travis-ci.com/rghorpade80/travis_ci_demo)
+
+
 This is a simple demonstration application used in the [Jenkins: The Definitive Guide](http://wakaleo.com/books/jenkins-the-definitive-guide) book.
 
 ## Building the project
