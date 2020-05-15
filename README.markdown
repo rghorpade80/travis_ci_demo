@@ -17,7 +17,7 @@ Development
 <tbody>
 <tr class="odd">
 <td align="left">
-<a href="" alt=""></a>
+<a href="https://travis-ci.com/mdsol/meds-connected-devices.svg?token=jq7bhJEUE6reryQjixaF&branch=develop" alt="Travis"></a>
 </td>
 <td align="left">
 <a href="" alt=""></a>
@@ -42,10 +42,10 @@ Development
 <a href=""></a>
 </td>
 <td align="left">
-<a href="" alt="rOpenSci"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="" alt="Codecov"></a>
+<a href="" alt=""></a>
 </td>
 </tr>
 <tr class="even">
