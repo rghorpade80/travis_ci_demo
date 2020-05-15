@@ -1,30 +1,3 @@
----
-output:
-  github_document:
-    html_preview: false
----
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, echo = FALSE}
-dir <- tempfile()
-dir.create(dir)
-knitr::opts_knit$set(root.dir = dir)
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/"
-)
-```
-
-```{r, echo = FALSE}
-suppressMessages(suppressWarnings(library(drake)))
-suppressMessages(suppressWarnings(library(dplyr)))
-clean(destroy = TRUE)
-invisible(drake_example("main", overwrite = TRUE))
-invisible(file.copy("main/raw_data.xlsx", ".", overwrite = TRUE))
-invisible(file.copy("main/report.Rmd", ".", overwrite = TRUE))
-```
 
 <center>
 <img src="https://docs.ropensci.org/drake/reference/figures/infographic.svg" alt="infographic" align="center" style = "border: none; float: center;">
