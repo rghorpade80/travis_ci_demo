@@ -50,24 +50,24 @@ Development
 </tr>
 <tr class="even">
 <td align="left">
-<a href="https://CRAN.R-project.org/package=drake"><img src="https://cranlogs.r-pkg.org/badges/drake" alt="downloads"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="https://doi.org/10.21105/joss.00550"><img src="https://joss.theoj.org/papers/10.21105/joss.00550/status.svg" alt="JOSS"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="https://bestpractices.coreinfrastructure.org/projects/2135"><img src="https://bestpractices.coreinfrastructure.org/projects/2135/badge"></a>
+<a href=""></a>
 </td>
 </tr>
 <tr class="odd">
 <td align="left">
-<a href="https://saythanks.io/to/drake-r-package-feedback"><img src="https://img.shields.io/badge/Say-Thanks-blue.svg" alt="SayThanks"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="https://zenodo.org/badge/latestdoi/82609103"><img src="https://zenodo.org/badge/82609103.svg" alt="Zenodo"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed." /></a>
+<a href="g" alt=" : ." /></a>
 </td>
 </tr>
 </tbody>
