@@ -17,35 +17,35 @@ Development
 <tbody>
 <tr class="odd">
 <td align="left">
-<a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="https://cran.r-project.org/package=drake"><img src="https://www.r-pkg.org/badges/version/drake" alt="CRAN"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="https://travis-ci.org/ropensci/drake"><img src="https://travis-ci.org/ropensci/drake.svg?branch=master" alt="Travis"></a>
+<a href="" alt=""></a>
 </td>
 </tr>
 <tr class="even">
 <td align="left">
-<a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.3.0-blue.svg" alt="minimal R version"></a>
+<a href=""></a>
 </td>
 <td align="left">
-<a href="https://cran.r-project.org/web/checks/check_results_drake.html"><img src="https://cranchecks.info/badges/summary/drake" alt="cran-checks"></a>
+<a href="" alt=""></a>
 </td>
 <td align="left">
-<a href="https://ci.appveyor.com/project/ropensci/drake"><img src="https://ci.appveyor.com/api/projects/status/4ypc9xnmqt70j94e?svg=true&amp;branch=master" alt="AppVeyor"></a>
+<a href="" alt=""></a>
 </td>
 </tr>
 <tr class="odd">
 <td align="left">
-<a href="https://CRAN.R-project.org/package=drake"><img src="https://tinyverse.netlify.com/badge/drake"></a>
+<a href=""></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/onboarding/issues/156"><img src="https://badges.ropensci.org/156_status.svg" alt="rOpenSci"></a>
+<a href="" alt="rOpenSci"></a>
 </td>
 <td align="left">
-<a href="https://codecov.io/github/ropensci/drake?branch=master"><img src="https://codecov.io/github/ropensci/drake/coverage.svg?branch=master" alt="Codecov"></a>
+<a href="" alt="Codecov"></a>
 </td>
 </tr>
 <tr class="even">
