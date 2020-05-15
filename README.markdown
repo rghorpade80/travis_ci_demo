@@ -1,7 +1,4 @@
 
-
-<center>
-<img src="https://docs.ropensci.org/drake/reference/figures/infographic.svg" alt="infographic" align="center" style = "border: none; float: center;">
 </center>
 <table class="table">
 <thead>
