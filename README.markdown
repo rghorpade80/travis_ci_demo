@@ -17,7 +17,7 @@ Development
 <tbody>
 <tr class="odd">
 <td align="left">
-<a href="https://travis-ci.com/mdsol/meds-connected-devices.svg?token=jq7bhJEUE6reryQjixaF&branch=develop" alt="Travis"></a>
+<a <href="https://travis-ci.com/mdsol/meds-connected-devices.svg?token=jq7bhJEUE6reryQjixaF&branch=develop" alt="Travis"></a>
 </td>
 <td align="left">
 <a href="" alt=""></a>
