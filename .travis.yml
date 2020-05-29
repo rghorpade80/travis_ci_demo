@@ -26,11 +26,11 @@ jobs:
     script:
     - "./mvnw test -B"
     
-  - stage: NEXUS_ARTIFACT_PUSH
-    script:
-    - mvn deploy --settings travis.settings.xml
-    on:
-      branch: master
+ # - stage: NEXUS_ARTIFACT_PUSH
+  #  script:
+   # - mvn deploy --settings travis.settings.xml
+    #on:
+     # branch: master
       
   - stage: BUILD & PUSH DOCKER IMAGE
     script:
